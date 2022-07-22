@@ -4,21 +4,19 @@ public class MoveVelocity : MonoBehaviour {
 
 	[SerializeField] private float moveSpeed;
 	private Rigidbody2D _rigidbody2D;
-	private Animator _animator;
-	private Vector3 velocityVector;
-	
+	private Vector2 _velocityVector;
+
 	void Awake() {
 		_rigidbody2D = GetComponent<Rigidbody2D>();
-		_animator = GetComponent<Animator>();
 	}
 
-	public void SetVelocity(Vector3 velocityVector) {
-		this.velocityVector = this.velocityVector;
+	public void SetVelocity(Vector2 velocityVector) {
+		this._velocityVector = velocityVector;
 	}
 
 	private void FixedUpdate() {
-		_rigidbody2D.velocity = velocityVector * moveSpeed;
-		_animator.SetBool("isWalking", true);
+		_rigidbody2D.velocity = _velocityVector * moveSpeed;
 	}
+	
 }
 
